@@ -28,3 +28,8 @@ before_script:
       fi
 script:
   - bash ./run-tests.sh
+
+branches:
+  - only:
+    - master
+    - rust-port
