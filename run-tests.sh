@@ -2,10 +2,9 @@
 
 set -o errexit -o pipefail -o nounset -o xtrace
 
-${PIP} install . --user
-export PATH=$HOME/.local/bin:$PATH
+alias travis-cargo="cargo run --release --"
 
-dir=test-$TRAVIS_RUST_VERSION-$PIP
+dir=test-$TRAVIS_RUST_VERSION-cargo
 echo "Running in $dir"
 cp -r test "$dir"
 cd "$dir"
