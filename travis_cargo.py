@@ -8,7 +8,10 @@ def run(*args, **kwargs):
     env = os.environ.copy()
     env.update(kwargs.get('env', {}))
 
-    ret = subprocess.call(args,  stdout=sys.stdout, stderr=sys.stderr, env=env)
+    ret = subprocess.call(args,
+                          stdout = sys.stdout,
+                          stderr = subprocess.STDOUT,
+                          env = env)
     if ret != 0:
         exit(ret)
 
@@ -32,7 +35,7 @@ def run_output(*args, **kwargs):
 
     try:
         output = subprocess.check_output(args,
-                                         stderr=sys.stderr,
+                                         stderr = subprocess.STDOUT,
                                          env = env)
     except subprocess.CalledProcessError as e:
         print(e.output.decode('utf-8'))
